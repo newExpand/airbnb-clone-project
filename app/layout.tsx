@@ -2,6 +2,7 @@ import { Noto_Sans_KR } from "next/font/google";
 
 import "./globals.css";
 import Navbar from "./components/navbar/Navbar";
+import ClientOnly from "./components/ClientOnly";
 
 export const metadata = {
     title: "Airbnb",
@@ -18,7 +19,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html lang="ko">
             <body className={font.className}>
-                <Navbar />
+                <ClientOnly>
+                    <Navbar />
+                </ClientOnly>
                 {children}
             </body>
         </html>
