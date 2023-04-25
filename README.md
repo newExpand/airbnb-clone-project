@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## 프로젝트 제목
 
-## Getting Started
+Airbnb 클론 코딩
 
-First, run the development server:
+## 프로젝트 설명
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+Airbnb 클론 프로젝트는 React, Tailwind, Prisma, MongoDB, NextAuth를 사용하여 제작된 웹 어플리케이션입니다. 세계적으로 많이 찾는 Airbnb의 디자인과 기능이 마음에 들어 제 방식으로 재구성 해보았습니다.
+
+## 특징 및 구현 목록
+
+4/25 기본 구현 목록
+
+-   Tailwind 디자인
+-   구글, Github, Naver 인증
+-   react-hook-form을 사용한 클라이언트 양식 유효성 검사 및 처리
+-   react-toast를 이용한 서버 오류 처리
+-   react-date-range가 포함된 캘린더
+-   페이지 로딩 상태
+-   페이지 빈 상태
+-   예매 / 예약
+-   게스트 예약 취소
+-   카테고리, 날짜 범위, 지도 위치, 손님 수, 객실 및 욕실별 검색
+-   즐겨찾기
+
+## 기술 스택
+
+-   React
+-   Node.js(Express)
+-   MongoDB
+-   Tailwind
+-   Prisma
+-   NextAuth
+
+## Installation
+
+### 저장소 복제
+
+```
+git clone https://github.com/newExpand/airbnb-clone-project.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 패키지 설치
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+npm i
+```
 
-[http://localhost:3000/api/hello](http://localhost:3000/api/hello) is an endpoint that uses [Route Handlers](https://beta.nextjs.org/docs/routing/route-handlers). This endpoint can be edited in `app/api/hello/route.ts`.
+### 앱 시작
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```
+npm run dev
+```
 
-## Learn More
+## airbnb 사용법
 
-To learn more about Next.js, take a look at the following resources:
+## 스크린 샷
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 도전과제 및 해결책
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Deployment
 
-## Deploy on Vercel
+-   Vercel 사용
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Roadmap
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+-   v1.0.0: 기본적인 기능 구현 (진행중)
+
+## Contact
+
+-   이메일: tmskqj@gmail.com
+-   블로그: https://opendeveloper.tistory.com/
