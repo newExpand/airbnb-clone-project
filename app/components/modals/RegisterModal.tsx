@@ -6,11 +6,13 @@ import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 
 import useRegisterModal from "@/app/hooks/useRegisterModa";
 import Modal from "./Modal";
 import Heading from "../Heading";
 import Input from "../inputs/Input";
+import Button from "../Button";
 
 const RegisterModal = () => {
     const registerModal = useRegisterModal();
@@ -37,7 +39,7 @@ const RegisterModal = () => {
                 registerModal.onClose();
             })
             .catch((error) => {
-                console.log(error);
+                toast.error("회원가입에 실패 하였습니다.");
             })
             .finally(() => {
                 setIsLoading(false);
@@ -78,6 +80,35 @@ const RegisterModal = () => {
         </div>
     );
 
+    const footerContent = (
+        <div className="flex flex-col gap-4 mt-3">
+            <hr />
+            <Button
+                outline
+                label="구글로 로그인 하기"
+                icon={FcGoogle}
+                onClick={() => {}}
+            />
+            <Button
+                outline
+                label="깃허브로 로그인 하기"
+                icon={AiFillGithub}
+                onClick={() => {}}
+            />
+            <div className="mt-4 font-light text-center text-neutral-500">
+                <div className="flex flex-row items-center justify-center gap-2">
+                    <div>이미 계정이 있으신가요?</div>
+                    <div
+                        onClick={registerModal.onClose}
+                        className="cursor-pointer text-neutral-800 hover:underline"
+                    >
+                        로그인
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+
     return (
         <Modal
             disabled={isLoading}
@@ -87,6 +118,7 @@ const RegisterModal = () => {
             onClose={registerModal.onClose}
             onSubmit={handleSubmit(onSubmit)}
             body={bodyContent}
+            footer={footerContent}
         />
     );
 };
