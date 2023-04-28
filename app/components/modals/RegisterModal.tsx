@@ -4,6 +4,7 @@ import React from "react";
 import axios from "axios";
 import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
+import { SiNaver } from "react-icons/si";
 import { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
@@ -93,6 +94,13 @@ const RegisterModal = () => {
                 outline
                 label="깃허브로 로그인 하기"
                 icon={AiFillGithub}
+                onClick={() => {}}
+            />
+            <Button
+                outline
+                label="네이버로 로그인 하기"
+                icon={SiNaver}
+                naverColor
                 onClick={() => {}}
             />
             <div className="mt-4 font-light text-center text-neutral-500">
