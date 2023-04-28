@@ -95,7 +95,7 @@ const LoginModal = () => {
                 outline
                 label="깃허브로 로그인 하기"
                 icon={AiFillGithub}
-                onClick={() => {}}
+                onClick={() => signIn("github")}
             />
             <Button
                 outline
