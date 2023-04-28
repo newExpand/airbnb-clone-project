@@ -20,8 +20,8 @@ export const authOptions: AuthOptions = {
             clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
         }),
         NaverProvider({
-            clientId: process.env.GOOGLE_CLIENT_ID as string,
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+            clientId: process.env.NAVER_CLIENT_ID as string,
+            clientSecret: process.env.NAVER_CLIENT_SECRET as string,
         }),
         CredentialProvider({
             name: "credentials",

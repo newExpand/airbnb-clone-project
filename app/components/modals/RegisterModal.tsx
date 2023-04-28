@@ -102,7 +102,7 @@ const RegisterModal = () => {
                 label="네이버로 로그인 하기"
                 icon={SiNaver}
                 naverColor
-                onClick={() => {}}
+                onClick={() => signIn("naver")}
             />
             <div className="mt-4 font-light text-center text-neutral-500">
                 <div className="flex flex-row items-center justify-center gap-2">

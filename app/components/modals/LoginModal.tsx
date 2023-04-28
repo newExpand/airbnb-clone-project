@@ -43,7 +43,6 @@ const LoginModal = () => {
             redirect: false,
         }).then((callback) => {
             setIsLoading(false);
-
             if (callback?.ok) {
                 toast.success("로그인에 성공했습니다.");
                 router.refresh();
@@ -102,7 +101,7 @@ const LoginModal = () => {
                 label="네이버로 로그인 하기"
                 icon={SiNaver}
                 naverColor
-                onClick={() => {}}
+                onClick={() => signIn("naver")}
             />
             <div className="mt-4 font-light text-center text-neutral-500">
                 <div className="flex flex-row items-center justify-center gap-2">
