@@ -89,7 +89,7 @@ const LoginModal = () => {
                 outline
                 label="구글로 로그인 하기"
                 icon={FcGoogle}
-                onClick={() => {}}
+                onClick={() => signIn("google")}
             />
             <Button
                 outline
