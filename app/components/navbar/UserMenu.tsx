@@ -1,13 +1,18 @@
 "use client";
 
 import React, { useCallback, useState } from "react";
-import { AiOutlineMenu } from "react-icons/ai";
-import Avatar from "../Avatar";
+import { signOut } from "next-auth/react";
+
 import MenuItem from "./MenuItem";
+import Avatar from "../Avatar";
+
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
-import { signOut } from "next-auth/react";
+import useRentModal from "@/app/hooks/useRentModal";
+
 import { SafeUser } from "@/app/types";
+
+import { AiOutlineMenu } from "react-icons/ai";
 
 interface UserMenuProps {
     currentUser?: SafeUser | null;
@@ -16,17 +21,27 @@ interface UserMenuProps {
 const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
     const registerModal = useRegisterModal();
     const loginModel = useLoginModal();
+    const rentModal = useRentModal();
+
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleOpen = useCallback(() => {
         setIsOpen((value) => !value);
     }, []);
 
+    const onRent = useCallback(() => {
+        if (!currentUser) {
+            return loginModel.onOpen();
+        }
+
+        rentModal.onOpen();
+    }, [currentUser, loginModel, rentModal]);
+
     return (
         <div className="relative">
             <div className="flex flex-row items-center gap-3">
                 <div
-                    onClick={() => {}}
+                    onClick={onRent}
                     className="hidden px-4 py-3 text-sm font-semibold transition rounded-full cursor-pointer break-keep md:block hover:bg-neutral-100"
                 >
                     당신의 공간을 에어비앤비하세요
@@ -52,7 +67,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                                 <hr />
                                 <MenuItem onClick={() => {}} label="계정" />
                                 <MenuItem
-                                    onClick={() => {}}
+                                    onClick={rentModal.onOpen}
                                     label="당신의 공간을 에어비앤비하세요"
                                 />
                                 <hr />
