@@ -7,6 +7,7 @@ import useRentModal from "@/app/hooks/useRentModal";
 import Heading from "../Heading";
 import { categories } from "../navbar/Categories";
 import CategoryInput from "../inputs/CategoryInput";
+import CountrySelect from "../inputs/CountrySelect";
 
 enum STEPS {
     CATEGORY = 0,
@@ -80,7 +81,7 @@ const RentModal = () => {
     let bodyContent = (
         <div className="flex flex-col gap-8">
             <Heading
-                title="최고의 표현으로 당신의 장소를 설명해주세요"
+                title="다음 중 숙소를 가장 잘 설명하는 것은 무⁠엇⁠인⁠가⁠요?"
                 subtitle="카테고리를 선택해주세요"
             />
             <div
@@ -107,11 +108,23 @@ const RentModal = () => {
         </div>
     );
 
+    if (step === STEPS.LOCATION) {
+        bodyContent = (
+            <div className="flex flex-col gap-8">
+                <Heading
+                    title="숙소 위치를 안내해주세요"
+                    subtitle="게스트가 숙소 찾는 것을 도와주세요"
+                />
+                <CountrySelect onChange={(value) => setCustomValue("location", value)} />
+            </div>
+        );
+    }
+
     return (
         <Modal
             isOpen={rentModal.isOpen}
             onClose={rentModal.onClose}
-            onSubmit={rentModal.onClose}
+            onSubmit={onNext}
             actionLabel={actionLabel}
             secondaryActionLabel={secondaryActionLabel}
             secondaryAction={step === STEPS.CATEGORY ? undefined : onBack}
