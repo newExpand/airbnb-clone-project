@@ -9,6 +9,7 @@ const nextConfig = {
             "lh3.googleusercontent.com",
             "ssl.pstatic.net",
             "flagcdn.com",
+            "res.cloudinary.com",
         ],
     },
 };

@@ -10,6 +10,7 @@ import CategoryInput from "../inputs/CategoryInput";
 import CountrySelect from "../inputs/CountrySelect";
 import dynamic from "next/dynamic";
 import Counter from "../inputs/Counter";
+import ImageUpload from "../inputs/ImageUpload";
 
 enum STEPS {
     CATEGORY = 0,
@@ -51,6 +52,7 @@ const RentModal = () => {
     const guestCount = watch("guestCount");
     const roomCount = watch("roomCount");
     const bathroomCount = watch("bathroomCount");
+    const imageSrc = watch("imageSrc");
 
     const Map = useMemo(
         () =>
@@ -164,6 +166,21 @@ const RentModal = () => {
                     subtitle="숙소의 욕실 갯수를 설정해주세요"
                     value={bathroomCount}
                     onChange={(value) => setCustomValue("bathroomCount", value)}
+                />
+            </div>
+        );
+    }
+
+    if (step === STEPS.IMAGES) {
+        bodyContent = (
+            <div className="flex flex-col gap-8">
+                <Heading
+                    title="숙소 사진을 추가해 주세요"
+                    subtitle="예쁜 숙소를 게스트에게 홍보하세요"
+                />
+                <ImageUpload
+                    value={imageSrc}
+                    onChange={(value) => setCustomValue("imageSrc", value)}
                 />
             </div>
         );
