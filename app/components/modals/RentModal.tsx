@@ -8,6 +8,7 @@ import Heading from "../Heading";
 import { categories } from "../navbar/Categories";
 import CategoryInput from "../inputs/CategoryInput";
 import CountrySelect from "../inputs/CountrySelect";
+import dynamic from "next/dynamic";
 
 enum STEPS {
     CATEGORY = 0,
@@ -45,6 +46,15 @@ const RentModal = () => {
     });
 
     const category = watch("category");
+    const location = watch("location");
+
+    const Map = useMemo(
+        () =>
+            dynamic(() => import("../Map"), {
+                ssr: false,
+            }),
+        [location]
+    );
 
     const setCustomValue = (id: string, value: any) => {
         setValue(id, value, {
@@ -115,7 +125,11 @@ const RentModal = () => {
                     title="숙소 위치를 안내해주세요"
                     subtitle="게스트가 숙소 찾는 것을 도와주세요"
                 />
-                <CountrySelect onChange={(value) => setCustomValue("location", value)} />
+                <CountrySelect
+                    value={location}
+                    onChange={(value) => setCustomValue("location", value)}
+                />
+                <Map center={location?.latlng} />
             </div>
         );
     }
