@@ -11,6 +11,7 @@ import CountrySelect from "../inputs/CountrySelect";
 import dynamic from "next/dynamic";
 import Counter from "../inputs/Counter";
 import ImageUpload from "../inputs/ImageUpload";
+import Input from "../inputs/Input";
 
 enum STEPS {
     CATEGORY = 0,
@@ -24,6 +25,7 @@ enum STEPS {
 const RentModal = () => {
     const rentModal = useRentModal();
 
+    const [isLoading, setIsLoading] = useState(false);
     const [step, setStep] = useState(STEPS.CATEGORY);
 
     const {
@@ -181,6 +183,55 @@ const RentModal = () => {
                 <ImageUpload
                     value={imageSrc}
                     onChange={(value) => setCustomValue("imageSrc", value)}
+                />
+            </div>
+        );
+    }
+
+    if (step === STEPS.DESCRIPTION) {
+        bodyContent = (
+            <div className="flex flex-col gap-8">
+                <Heading
+                    title="당신의 에어비앤비를 설명해 주세요"
+                    subtitle="표현할 수 있는 최고의 한마디를 적어주세요"
+                />
+                <Input
+                    id="title"
+                    label="제목"
+                    disabled={isLoading}
+                    register={register}
+                    errors={errors}
+                    required
+                />
+                <hr />
+                <Input
+                    id="description"
+                    label="설명"
+                    disabled={isLoading}
+                    register={register}
+                    errors={errors}
+                    required
+                />
+            </div>
+        );
+    }
+
+    if (step === STEPS.PRICE) {
+        bodyContent = (
+            <div className="flex flex-col gap-8">
+                <Heading
+                    title="가격을 설정해주세요"
+                    subtitle="1박을 기준으로 설정해주세요"
+                />
+                <Input
+                    id="price"
+                    label="가격"
+                    formatPrice
+                    type="number"
+                    disabled={isLoading}
+                    register={register}
+                    errors={errors}
+                    required
                 />
             </div>
         );
