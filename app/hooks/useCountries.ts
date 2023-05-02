@@ -9,8 +9,6 @@ const formattedCountries = countries.map((country) => ({
     translations: country.translations.kor.common,
 }));
 
-console.log(countries);
-
 const useCountries = () => {
     const getAll = () => formattedCountries;
 
