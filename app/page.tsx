@@ -3,13 +3,14 @@ import { Inter } from "next/font/google";
 import ClientOnly from "./components/ClientOnly";
 import Container from "./components/Container";
 import EmptyState from "./components/EmptyState";
+import getListings from "./actions/getListings";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
-    const isEmpty = true;
+export default async function Home() {
+    const listings = await getListings();
 
-    if (isEmpty) {
+    if (listings.length === 0) {
         return (
             <ClientOnly>
                 <EmptyState showReset />
