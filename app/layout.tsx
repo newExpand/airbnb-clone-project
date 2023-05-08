@@ -1,5 +1,4 @@
 import { Noto_Sans_KR } from "next/font/google";
-
 import "./globals.css";
 import Navbar from "./components/navbar/Navbar";
 import ClientOnly from "./components/ClientOnly";
@@ -34,7 +33,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                     <RegisterModal />
                     <Navbar currentUser={currentUser} />
                 </ClientOnly>
-                {children}
+                <div className="pb-20 pt-28">{children}</div>
             </body>
         </html>
     );
