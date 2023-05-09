@@ -4,6 +4,7 @@ import ClientOnly from "./components/ClientOnly";
 import Container from "./components/Container";
 import EmptyState from "./components/EmptyState";
 import getListings from "./actions/getListings";
+import ListingCard from "./components/listings/ListingCard";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +23,9 @@ export default async function Home() {
         <ClientOnly>
             <Container>
                 <div className="grid grid-cols-1 gap-8 pt-24 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
-                    <div>리스트</div>
+                    {listings.map((listing: any) => {
+                        return <ListingCard key={listing.id} data={listing} />;
+                    })}
                 </div>
             </Container>
         </ClientOnly>
