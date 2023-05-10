@@ -1,24 +1,24 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+import { AiOutlineMenu } from "react-icons/ai";
+import Avatar from "../Avatar";
 import React, { useCallback, useState } from "react";
 import { signOut } from "next-auth/react";
 
 import MenuItem from "./MenuItem";
-import Avatar from "../Avatar";
 
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import useRentModal from "@/app/hooks/useRentModal";
-
 import { SafeUser } from "@/app/types";
-
-import { AiOutlineMenu } from "react-icons/ai";
 
 interface UserMenuProps {
     currentUser?: SafeUser | null;
 }
 
 const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
+    const router = useRouter();
     const registerModal = useRegisterModal();
     const loginModel = useLoginModal();
     const rentModal = useRentModal();
@@ -61,7 +61,10 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                     <div className="flex flex-col cursor-pointer">
                         {currentUser ? (
                             <>
-                                <MenuItem onClick={() => {}} label="나의 여행" />
+                                <MenuItem
+                                    onClick={() => router.push("/trips")}
+                                    label="나의 여행"
+                                />
                                 <MenuItem onClick={() => {}} label="나의 위시리스트" />
                                 <MenuItem onClick={() => {}} label="나의 예약" />
                                 <hr />
