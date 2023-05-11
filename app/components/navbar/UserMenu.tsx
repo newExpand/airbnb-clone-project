@@ -66,7 +66,10 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                                     label="나의 여행"
                                 />
                                 <MenuItem onClick={() => {}} label="나의 위시리스트" />
-                                <MenuItem onClick={() => {}} label="나의 예약" />
+                                <MenuItem
+                                    onClick={() => router.push("/reservations")}
+                                    label="나의 예약"
+                                />
                                 <hr />
                                 <MenuItem onClick={() => {}} label="계정" />
                                 <MenuItem
