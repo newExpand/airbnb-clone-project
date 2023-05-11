@@ -40,7 +40,9 @@ const RegisterModal = () => {
         axios
             .post("/api/register", data)
             .then(() => {
+                toast.success("회원가입에 성공했습니다.");
                 registerModal.onClose();
+                loginModal.onOpen();
             })
             .catch((error) => {
                 toast.error("회원가입에 실패 하였습니다.");
