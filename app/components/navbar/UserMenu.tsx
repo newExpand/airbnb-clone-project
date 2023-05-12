@@ -74,7 +74,10 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                                     label="나의 예약"
                                 />
                                 <hr />
-                                <MenuItem onClick={() => {}} label="계정" />
+                                <MenuItem
+                                    onClick={() => router.push("/properties")}
+                                    label="나의 에어비앤비"
+                                />
                                 <MenuItem
                                     onClick={rentModal.onOpen}
                                     label="당신의 공간을 에어비앤비하세요"
