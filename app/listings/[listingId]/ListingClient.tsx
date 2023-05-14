@@ -5,7 +5,7 @@ import { toast } from "react-hot-toast";
 import axios from "axios";
 import { differenceInCalendarDays, eachDayOfInterval } from "date-fns";
 import { useRouter } from "next/navigation";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState, useId } from "react";
 
 import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
 import { categories } from "@/app/components/navbar/Categories";
@@ -41,6 +41,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
 }) => {
     const loginModal = useLoginModal();
     const router = useRouter();
+    const merchantId = useId();
 
     const disabledDates = useMemo(() => {
         let dates: Date[] = [];
@@ -87,7 +88,6 @@ const ListingClient: React.FC<ListingClientProps> = ({
                             startDate: dateRange.startDate,
                             endDate: dateRange.endDate,
                             listingId: listing?.id,
-                            payId: rsp.imp_uid,
                         })
                         .then(() => {
                             toast.success("숙소가 예약되었습니다");
@@ -99,6 +99,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
                         });
                 } else {
                     toast.error("숙소 예약에 실패하였습니다");
+                    setIsLoading(false);
                 }
             }
         );
@@ -129,7 +130,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
 
     useEffect(() => {
         const IMP = window.IMP;
-        IMP.init(process.env.IAMPORT_ID);
+        IMP.init("imp74864012");
     }, []);
 
     return (
