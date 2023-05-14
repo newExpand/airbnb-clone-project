@@ -1,5 +1,7 @@
 import { Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
+import Script from "next/script";
+
 import Navbar from "./components/navbar/Navbar";
 import ClientOnly from "./components/ClientOnly";
 import RegisterModal from "./components/modals/RegisterModal";
@@ -37,6 +39,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                 </ClientOnly>
                 <div className="pb-20 pt-28">{children}</div>
             </body>
+            <Script src="https://cdn.iamport.kr/v1/iamport.js" />
         </html>
     );
 }

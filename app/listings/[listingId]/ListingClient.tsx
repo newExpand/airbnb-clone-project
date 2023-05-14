@@ -16,6 +16,10 @@ import ListingInfo from "@/app/components/listings/ListingInfo";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import ListingReservation from "@/app/components/listings/ListingReservation";
 
+declare global {
+    var IMP: any;
+}
+
 const initialDateRange = {
     startDate: new Date(),
     endDate: new Date(),
@@ -66,25 +70,47 @@ const ListingClient: React.FC<ListingClientProps> = ({
 
         setIsLoading(true);
 
-        axios
-            .post("/api/reservations", {
-                totalPrice,
-                startDate: dateRange.startDate,
-                endDate: dateRange.endDate,
-                listingId: listing?.id,
-            })
-            .then(() => {
-                toast.success("숙소가 예약되었습니다");
-                setDateRange(initialDateRange);
-                router.push("/trips");
-            })
-            .catch(() => {
-                toast.error("숙소 예약에 실패하였습니다");
-            })
-            .finally(() => {
-                setIsLoading(false);
-            });
-    }, [currentUser, loginModal, totalPrice, dateRange, listing?.id, router]);
+        IMP.request_pay(
+            {
+                // param
+                pg: "kakaopay",
+                name: listing.title,
+                amount: totalPrice,
+                buyer_email: currentUser?.email,
+                buyer_name: currentUser?.name,
+            },
+            (rsp: any) => {
+                if (rsp.success) {
+                    axios
+                        .post("/api/reservations", {
+                            totalPrice,
+                            startDate: dateRange.startDate,
+                            endDate: dateRange.endDate,
+                            listingId: listing?.id,
+                            payId: rsp.imp_uid,
+                        })
+                        .then(() => {
+                            toast.success("숙소가 예약되었습니다");
+                            setDateRange(initialDateRange);
+                            router.push("/trips");
+                        })
+                        .finally(() => {
+                            setIsLoading(false);
+                        });
+                } else {
+                    toast.error("숙소 예약에 실패하였습니다");
+                }
+            }
+        );
+    }, [
+        currentUser,
+        loginModal,
+        totalPrice,
+        dateRange,
+        listing?.id,
+        router,
+        listing.title,
+    ]);
 
     useEffect(() => {
         if (dateRange.startDate && dateRange.endDate) {
@@ -100,6 +126,11 @@ const ListingClient: React.FC<ListingClientProps> = ({
             }
         }
     }, [dateRange, listing.price]);
+
+    useEffect(() => {
+        const IMP = window.IMP;
+        IMP.init(process.env.IAMPORT_ID);
+    }, []);
 
     return (
         <Container>
