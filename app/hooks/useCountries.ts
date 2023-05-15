@@ -9,8 +9,21 @@ const formattedCountries = countries.map((country) => ({
     translations: country.translations.kor.common,
 }));
 
+const koreanFormattedCountries = countries.map((country) => ({
+    value: country.translations.kor.common,
+    countryCode: country.cca2,
+    label: country.translations.kor.common,
+    flag: country.flag,
+    latlng: country.latlng,
+    region: country.region,
+    translations: country.name.common,
+    ex: country,
+}));
+
 const useCountries = () => {
     const getAll = () => formattedCountries;
+
+    const koreanGetAll = () => koreanFormattedCountries;
 
     const getByValue = (value: string) => {
         return formattedCountries.find((item) => item.value === value);
@@ -19,6 +32,7 @@ const useCountries = () => {
     return {
         getAll,
         getByValue,
+        koreanGetAll,
     };
 };
 
