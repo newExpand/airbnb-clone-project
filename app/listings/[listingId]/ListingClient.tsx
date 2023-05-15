@@ -79,6 +79,8 @@ const ListingClient: React.FC<ListingClientProps> = ({
                 amount: totalPrice,
                 buyer_email: currentUser?.email,
                 buyer_name: currentUser?.name,
+                digital: true,
+                m_redirect_url: `/listings/${listing.id}`,
             },
             (rsp: any) => {
                 if (rsp.success) {
@@ -94,11 +96,14 @@ const ListingClient: React.FC<ListingClientProps> = ({
                             setDateRange(initialDateRange);
                             router.push("/trips");
                         })
+                        .catch(() => {
+                            toast.error("숙소 예약에 실패하였습니다");
+                        })
                         .finally(() => {
                             setIsLoading(false);
                         });
                 } else {
-                    toast.error("숙소 예약에 실패하였습니다");
+                    toast.error("결제를 취소하였습니다");
                     setIsLoading(false);
                 }
             }
