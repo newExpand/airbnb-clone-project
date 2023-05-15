@@ -27,6 +27,7 @@ const Properties = async () => {
                 <EmptyState
                     title="등록된 에어비앤비를 찾지 못했습니다"
                     subtitle="에어비앤비를 등록해 사람들에게 뽐내보세요"
+                    homeReset
                 />
             </ClientOnly>
         );

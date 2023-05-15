@@ -27,6 +27,7 @@ const Trips = async () => {
                 <EmptyState
                     title="아직 예약된 여행이 없습니다!"
                     subtitle="여행 가방에 쌓인 먼지를 털어내고 다음 여행 계획을 세워보세요."
+                    homeReset
                 />
             </ClientOnly>
         );

@@ -27,6 +27,7 @@ const Reservations = async () => {
                 <EmptyState
                     title="예약이 존재하지 않습니다"
                     subtitle="등록한 에어비앤비에 들어온 예약이 없습니다"
+                    homeReset
                 />
             </ClientOnly>
         );
