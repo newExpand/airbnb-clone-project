@@ -8,6 +8,12 @@ body,
     height: 100%;
 }
 
+::-webkit-scrollbar {
+    display: none;
+    scrollbar-width: none;
+    -moz-appearance: none;
+}
+
 .leaflet-bottom,
 .leaflet-top,
 .leaflet-control,
