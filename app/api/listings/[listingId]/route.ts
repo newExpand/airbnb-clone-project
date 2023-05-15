@@ -10,7 +10,6 @@ interface IParams {
 
 export async function DELETE(req: Request, { params }: { params: IParams }) {
     const currentUser = await getCurrentUser();
-    const list = await getListingById(params);
 
     if (!currentUser) return NextResponse.error();
 
