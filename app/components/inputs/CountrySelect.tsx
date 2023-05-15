@@ -3,6 +3,7 @@
 import useCountries from "@/app/hooks/useCountries";
 import Image from "next/image";
 import React from "react";
+import ReactCountryFlag from "react-country-flag";
 import Select from "react-select";
 
 export type CountrySelectValue = {
@@ -32,12 +33,10 @@ const CountrySelect: React.FC<CountrySelectProps> = ({ value, onChange }) => {
                 onChange={(value) => onChange(value as CountrySelectValue)}
                 formatOptionLabel={(option: any) => (
                     <div className="flex flex-row items-center gap-3">
-                        {/* <div>{option.flag}</div>  이모지로 구현 할려 했으나 크롬에서 인식이 안돼 flagcdn으로 대체함 */}
-                        <Image
-                            src={`https://flagcdn.com/16x12/${option.value.toLowerCase()}.png`}
-                            alt="flag"
-                            width={16}
-                            height={12}
+                        <ReactCountryFlag
+                            countryCode={option.value}
+                            svg
+                            aria-label={option.translations}
                         />
                         <div>
                             {`${option.label}(${option.translations})`},
