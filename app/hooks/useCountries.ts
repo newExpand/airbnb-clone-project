@@ -26,7 +26,7 @@ const useCountries = () => {
     const koreanGetAll = () => koreanFormattedCountries;
 
     const getByValue = (value: string) => {
-        return koreanFormattedCountries.find((item) => item.countryCode === value);
+        return koreanFormattedCountries.find((item) => item.value === value);
     };
 
     return {

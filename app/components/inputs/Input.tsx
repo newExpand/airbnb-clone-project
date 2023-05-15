@@ -2,6 +2,7 @@
 
 import React from "react";
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
+import { BiWon } from "react-icons/bi";
 
 interface InputProps {
     id: string;
@@ -26,6 +27,9 @@ const Input: React.FC<InputProps> = ({
 }) => {
     return (
         <div className="relative w-full">
+            {formatPrice && (
+                <BiWon size={24} className="absolute text-neutral-700 top-5 left-2" />
+            )}
             <input
                 id={id}
                 disabled={disabled}
@@ -50,9 +54,6 @@ const Input: React.FC<InputProps> = ({
                     ${errors[id] ? "focus:border-rose-500" : "focus:border-black"}
                 `}
             />
-            {formatPrice && (
-                <span className="absolute text-neutral-700 top-5 left-2">원</span>
-            )}
             <label
                 className={`
                     absolute
