@@ -1,11 +1,12 @@
 "use client";
 
+import qs from "query-string";
 import { Range } from "react-date-range";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 import { differenceInCalendarDays, eachDayOfInterval } from "date-fns";
-import { useRouter } from "next/navigation";
-import React, { useCallback, useEffect, useMemo, useState, useId } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 
 import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
 import { categories } from "@/app/components/navbar/Categories";
@@ -41,7 +42,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
 }) => {
     const loginModal = useLoginModal();
     const router = useRouter();
-    const merchantId = useId();
+    const params = useSearchParams();
 
     const disabledDates = useMemo(() => {
         let dates: Date[] = [];
@@ -80,7 +81,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
                 buyer_email: currentUser?.email,
                 buyer_name: currentUser?.name,
                 digital: true,
-                m_redirect_url: `/listings/${listing.id}`,
+                m_redirect_url: `http://localhost:3000/listings/${listing.id}`,
             },
             (rsp: any) => {
                 if (rsp.success) {
@@ -137,6 +138,41 @@ const ListingClient: React.FC<ListingClientProps> = ({
         const IMP = window.IMP;
         IMP.init("imp74864012");
     }, []);
+
+    // 모바일 결제 후 예약처리
+    useEffect(() => {
+        if (
+            params?.get("imp_success") === "true" &&
+            typeof params?.get("imp_success") === "string"
+        ) {
+            axios
+                .post("/api/reservations", {
+                    totalPrice,
+                    startDate: dateRange.startDate,
+                    endDate: dateRange.endDate,
+                    listingId: listing?.id,
+                })
+                .then(() => {
+                    toast.success("숙소가 예약되었습니다");
+                    setDateRange(initialDateRange);
+                    router.push("/trips");
+                })
+                .catch(() => {
+                    toast.error("숙소 예약에 실패하였습니다");
+                })
+                .finally(() => {
+                    setIsLoading(false);
+                });
+        }
+
+        if (
+            params?.get("imp_success") === "false" &&
+            typeof params?.get("imp_success") === "string"
+        ) {
+            toast.error("결제를 취소하였습니다");
+            setIsLoading(false);
+        }
+    }, [params, dateRange.startDate, dateRange.endDate, listing?.id, router, totalPrice]);
 
     return (
         <Container>
