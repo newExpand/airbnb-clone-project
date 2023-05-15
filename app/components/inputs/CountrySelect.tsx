@@ -5,8 +5,6 @@ import Image from "next/image";
 import React from "react";
 import ReactCountryFlag from "react-country-flag";
 import Select from "react-select";
-import hangul from "hangul-js";
-import { FilterOptionOption } from "react-select/dist/declarations/src/filters";
 
 export type CountrySelectValue = {
     flag: string;
@@ -24,10 +22,6 @@ interface CountrySelectProps {
 
 const CountrySelect: React.FC<CountrySelectProps> = ({ value, onChange }) => {
     const { getAll, koreanGetAll } = useCountries();
-
-    // console.log(koreanGetAll());
-    // console.log(getAll());
-    // console.log(hangul.disassemble(option.translations));
     return (
         <div>
             <Select
@@ -68,6 +62,7 @@ const CountrySelect: React.FC<CountrySelectProps> = ({ value, onChange }) => {
                     },
                 })}
             />
+            {/* 버튼 눌렀을 시 스위칭 하는 기능 만들 수 있어서 잠시 둠 */}
             {/* <Select
                 placeholder="나라를 선택해주세요"
                 isClearable
