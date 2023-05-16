@@ -2,6 +2,7 @@
 
 import React from "react";
 import { DateRange, Range, RangeKeyDict } from "react-date-range";
+import ko from "date-fns/locale/ko";
 
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
@@ -23,6 +24,7 @@ const Calendar: React.FC<CalendarProps> = ({ value, onChange, disabledDates }) =
             showDateDisplay={false}
             minDate={new Date()}
             disabledDates={disabledDates}
+            locale={ko}
         />
     );
 };
