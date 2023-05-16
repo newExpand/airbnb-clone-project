@@ -24,12 +24,13 @@ const TripsClient: React.FC<TripClientProps> = ({ reservations, currentUser }) =
             axios
                 .post("/api/trip", {
                     tripListId: id,
+                    m_redirect_url: "https://clone-example-three.vercel.app/trip",
                 })
                 .then((res) => {
                     axios
                         .delete(`/api/reservations/${id}`)
                         .then(() => {
-                            toast.success(`${res.data.name} 예약이 취소되었습니다`);
+                            toast.success("예약이 취소되었습니다");
                             router.refresh();
                         })
                         .catch((error) => {

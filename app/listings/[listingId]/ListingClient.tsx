@@ -166,6 +166,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
                 })
                 .finally(() => {
                     setIsLoading(false);
+                    params.set();
                 });
         }
 
