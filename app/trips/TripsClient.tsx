@@ -24,7 +24,6 @@ const TripsClient: React.FC<TripClientProps> = ({ reservations, currentUser }) =
             axios
                 .post("/api/trip", {
                     tripListId: id,
-                    m_redirect_url: "https://clone-example-three.vercel.app/trip",
                 })
                 .then((res) => {
                     axios
