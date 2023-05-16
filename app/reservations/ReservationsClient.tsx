@@ -28,13 +28,22 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
             setDeletingId(id);
 
             axios
-                .delete(`/api/reservations/${id}`)
-                .then(() => {
-                    toast.success("예약을 취소시켰습니다");
-                    router.refresh();
+                .post("/api/trip", {
+                    tripListId: id,
                 })
-                .catch(() => {
-                    toast.error("예약 취소에 실패했습니다");
+                .then((res) => {
+                    axios
+                        .delete(`/api/reservations/${id}`)
+                        .then(() => {
+                            toast.success("예약을 취소시켰습니다");
+                            router.refresh();
+                        })
+                        .catch((error) => {
+                            toast.error("예약 취소에 실패했습니다");
+                        });
+                })
+                .catch((error) => {
+                    toast.error(error?.response?.data?.error);
                 })
                 .finally(() => {
                     setDeletingId("");

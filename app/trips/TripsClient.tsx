@@ -21,6 +21,8 @@ const TripsClient: React.FC<TripClientProps> = ({ reservations, currentUser }) =
 
     const onCancel = useCallback(
         (id: string) => {
+            setDeletingId(id);
+
             axios
                 .post("/api/trip", {
                     tripListId: id,
@@ -34,13 +36,13 @@ const TripsClient: React.FC<TripClientProps> = ({ reservations, currentUser }) =
                         })
                         .catch((error) => {
                             toast.error(error?.response?.data?.error);
-                        })
-                        .finally(() => {
-                            setDeletingId("");
                         });
                 })
                 .catch((error) => {
                     toast.error(error?.response?.data?.error);
+                })
+                .finally(() => {
+                    setDeletingId("");
                 });
         },
         [router]
