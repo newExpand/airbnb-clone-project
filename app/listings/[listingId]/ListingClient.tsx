@@ -1,6 +1,6 @@
 "use client";
 
-import qs from "query-string";
+import { v4 as uuidv4 } from "uuid";
 import { Range } from "react-date-range";
 import { toast } from "react-hot-toast";
 import axios from "axios";
@@ -43,6 +43,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
     const loginModal = useLoginModal();
     const router = useRouter();
     const params = useSearchParams();
+    const uniqueId = uuidv4();
 
     const disabledDates = useMemo(() => {
         let dates: Date[] = [];
@@ -80,7 +81,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
                 amount: totalPrice,
                 buyer_email: currentUser?.email,
                 buyer_name: currentUser?.name,
-                digital: true,
+                merchant_uid: uniqueId,
                 m_redirect_url: `https://clone-example-three.vercel.app/listings/${listing.id}`,
             },
             (rsp: any) => {
@@ -91,6 +92,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
                             startDate: dateRange.startDate,
                             endDate: dateRange.endDate,
                             listingId: listing?.id,
+                            merchant_uid: uniqueId,
                         })
                         .then(() => {
                             toast.success("숙소가 예약되었습니다");
@@ -117,6 +119,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
         listing?.id,
         router,
         listing.title,
+        uniqueId,
     ]);
 
     useEffect(() => {
@@ -151,6 +154,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
                     startDate: dateRange.startDate,
                     endDate: dateRange.endDate,
                     listingId: listing?.id,
+                    merchant_uid: uniqueId,
                 })
                 .then(() => {
                     toast.success("숙소가 예약되었습니다");
@@ -172,7 +176,15 @@ const ListingClient: React.FC<ListingClientProps> = ({
             toast.error("결제를 취소하였습니다");
             setIsLoading(false);
         }
-    }, [params, dateRange.startDate, dateRange.endDate, listing?.id, router, totalPrice]);
+    }, [
+        params,
+        dateRange.startDate,
+        dateRange.endDate,
+        listing?.id,
+        router,
+        totalPrice,
+        uniqueId,
+    ]);
 
     return (
         <Container>

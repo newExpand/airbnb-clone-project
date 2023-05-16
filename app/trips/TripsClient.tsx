@@ -21,19 +21,26 @@ const TripsClient: React.FC<TripClientProps> = ({ reservations, currentUser }) =
 
     const onCancel = useCallback(
         (id: string) => {
-            setDeletingId(id);
-
             axios
-                .delete(`/api/reservations/${id}`)
-                .then(() => {
-                    toast.success("예약이 취소되었습니다");
-                    router.refresh();
+                .post("/api/trip", {
+                    tripListId: id,
+                })
+                .then((res) => {
+                    axios
+                        .delete(`/api/reservations/${id}`)
+                        .then(() => {
+                            toast.success(`${res.data.name} 예약이 취소되었습니다`);
+                            router.refresh();
+                        })
+                        .catch((error) => {
+                            toast.error(error?.response?.data?.error);
+                        })
+                        .finally(() => {
+                            setDeletingId("");
+                        });
                 })
                 .catch((error) => {
                     toast.error(error?.response?.data?.error);
-                })
-                .finally(() => {
-                    setDeletingId("");
                 });
         },
         [router]
