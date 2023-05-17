@@ -153,17 +153,20 @@ const ListingClient: React.FC<ListingClientProps> = ({
             params?.get("imp_success") === "true" &&
             typeof params?.get("imp_success") === "string"
         ) {
-            const totalPriceM = params?.toString(); //테스트
-
-            console.log(qs.parse(totalPriceM.toString()));
+            const {
+                startDate: startDateM,
+                endDate: endDateM,
+                totalPrice: totalPriceM,
+                merchant_uid: merchant_uidM,
+            } = qs.parse(params?.toString()); //테스트
 
             axios
                 .post("/api/reservations", {
-                    totalPrice,
-                    startDate: dateRange.startDate,
-                    endDate: dateRange.endDate,
+                    totalPrice: totalPriceM,
+                    startDate: startDateM,
+                    endDate: endDateM,
                     listingId: listing?.id,
-                    merchant_uid: uniqueId,
+                    merchant_uid: merchant_uidM,
                 })
                 .then(() => {
                     toast.success("숙소가 예약되었습니다");
