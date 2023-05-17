@@ -163,7 +163,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
                 .then(() => {
                     toast.success("숙소가 예약되었습니다");
                     setDateRange(initialDateRange);
-                    router.push("/trips");
+                    // router.push("/trips");
                 })
                 .catch(() => {
                     toast.error("숙소 예약에 실패하였습니다");
