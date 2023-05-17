@@ -18,8 +18,6 @@ import ListingInfo from "@/app/components/listings/ListingInfo";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import ListingReservation from "@/app/components/listings/ListingReservation";
 
-import eruda from "eruda";
-
 declare global {
     var IMP: any;
 }
@@ -143,8 +141,6 @@ const ListingClient: React.FC<ListingClientProps> = ({
     useEffect(() => {
         const IMP = window.IMP;
         IMP.init("imp74864012");
-
-        eruda.init();
     }, []);
 
     // 모바일 결제 후 예약처리
@@ -158,18 +154,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
                 endDate: endDateM,
                 totalPrice: totalPriceM,
                 merchant_uid: merchant_uidM,
-            } = qs.parse(params?.toString()); //테스트
-
-            console.log(
-                "스타트데이트 => ",
-                startDateM,
-                "엔드데이트 => ",
-                endDateM,
-                "토탈프라이스 => ",
-                totalPriceM,
-                "merchant_uidM => ",
-                merchant_uidM
-            );
+            } = qs.parse(params?.toString());
 
             axios
                 .post("/api/reservations", {
