@@ -79,6 +79,10 @@ const ListingClient: React.FC<ListingClientProps> = ({
                 pg: "kakaopay",
                 name: listing.title,
                 amount: totalPrice,
+
+                startDate: dateRange.startDate,
+                endDate: dateRange.endDate,
+
                 buyer_email: currentUser?.email,
                 buyer_name: currentUser?.name,
                 merchant_uid: uniqueId,
@@ -105,13 +109,10 @@ const ListingClient: React.FC<ListingClientProps> = ({
                         .finally(() => {
                             setIsLoading(false);
                         });
-                    alert("테스트1");
                 } else {
                     toast.error("결제를 취소하였습니다");
                     setIsLoading(false);
-                    alert("테스트2");
                 }
-                alert("테스트3");
             }
         );
     }, [
@@ -162,7 +163,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
                 .then(() => {
                     toast.success("숙소가 예약되었습니다");
                     setDateRange(initialDateRange);
-                    // router.push("/trips");
+                    router.push("/trips");
                 })
                 .catch(() => {
                     toast.error("숙소 예약에 실패하였습니다");
