@@ -148,9 +148,12 @@ const ListingClient: React.FC<ListingClientProps> = ({
             params?.get("imp_success") === "true" &&
             typeof params?.get("imp_success") === "string"
         ) {
+            const totalPriceM = params?.get("amount"); //테스트
+
             axios
                 .post("/api/reservations", {
-                    totalPrice,
+                    totalPrice: totalPriceM, // 테스트
+                    // totalPrice,
                     startDate: dateRange.startDate,
                     endDate: dateRange.endDate,
                     listingId: listing?.id,
