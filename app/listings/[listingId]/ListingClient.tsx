@@ -160,6 +160,17 @@ const ListingClient: React.FC<ListingClientProps> = ({
                 merchant_uid: merchant_uidM,
             } = qs.parse(params?.toString()); //테스트
 
+            console.log(
+                "스타트데이트 => ",
+                startDateM,
+                "엔드데이트 => ",
+                endDateM,
+                "토탈프라이스 => ",
+                totalPriceM,
+                "merchant_uidM => ",
+                merchant_uidM
+            );
+
             axios
                 .post("/api/reservations", {
                     totalPrice: totalPriceM,
