@@ -30,6 +30,7 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
             axios
                 .post("/api/trip", {
                     tripListId: id,
+                    m_redirect_url: "/api/trip",
                 })
                 .then((res) => {
                     axios
