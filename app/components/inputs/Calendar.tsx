@@ -24,7 +24,7 @@ const Calendar: React.FC<CalendarProps> = ({ value, onChange, disabledDates }) =
             showDateDisplay={false}
             minDate={new Date()}
             disabledDates={disabledDates}
-            locale={ko}
+            // locale={ko}
         />
     );
 };
