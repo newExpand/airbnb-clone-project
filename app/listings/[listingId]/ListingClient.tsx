@@ -1,5 +1,6 @@
 "use client";
 
+import qs from "query-string";
 import { v4 as uuidv4 } from "uuid";
 import { Range } from "react-date-range";
 import { toast } from "react-hot-toast";
@@ -154,7 +155,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
         ) {
             const totalPriceM = params?.toString(); //테스트
 
-            console.log(totalPriceM);
+            console.log(qs.parse(totalPriceM.toString()));
 
             axios
                 .post("/api/reservations", {
