@@ -11,6 +11,7 @@ import RentModal from "./components/modals/RentModal";
 import ToasterProvider from "./providers/ToasterProvider";
 import getCurrentUser from "./actions/getCurrentUser";
 import SearchModal from "./components/modals/SearchModal";
+import eruda from "eruda";
 
 export const metadata = {
     title: "Airbnb",
@@ -26,6 +27,7 @@ const font = Noto_Sans_KR({
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
     const currentUser = await getCurrentUser();
 
+    eruda.init();
     return (
         <html lang="ko">
             <body className={font.className}>
