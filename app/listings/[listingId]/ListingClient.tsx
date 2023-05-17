@@ -17,6 +17,8 @@ import ListingInfo from "@/app/components/listings/ListingInfo";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import ListingReservation from "@/app/components/listings/ListingReservation";
 
+import eruda from "eruda";
+
 declare global {
     var IMP: any;
 }
@@ -140,6 +142,8 @@ const ListingClient: React.FC<ListingClientProps> = ({
     useEffect(() => {
         const IMP = window.IMP;
         IMP.init("imp74864012");
+
+        eruda.init();
     }, []);
 
     // 모바일 결제 후 예약처리
