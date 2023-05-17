@@ -135,15 +135,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
                 setTotalPrice(listing.price);
             }
         }
-    }, [dateRange, listing.price]);
 
-    useEffect(() => {
-        const IMP = window.IMP;
-        IMP.init("imp74864012");
-    }, []);
-
-    // 모바일 결제 후 예약처리
-    useEffect(() => {
         if (
             params?.get("imp_success") === "true" &&
             typeof params?.get("imp_success") === "string"
@@ -177,15 +169,57 @@ const ListingClient: React.FC<ListingClientProps> = ({
             toast.error("결제를 취소하였습니다");
             setIsLoading(false);
         }
-    }, [
-        params,
-        dateRange.startDate,
-        dateRange.endDate,
-        listing?.id,
-        router,
-        totalPrice,
-        uniqueId,
-    ]);
+    }, [dateRange, listing.price, listing?.id, params, router, totalPrice, uniqueId]);
+
+    useEffect(() => {
+        const IMP = window.IMP;
+        IMP.init("imp74864012");
+    }, []);
+
+    // 모바일 결제 후 예약처리
+    // useEffect(() => {
+    //     if (
+    //         params?.get("imp_success") === "true" &&
+    //         typeof params?.get("imp_success") === "string"
+    //     ) {
+    //         axios
+    //             .post("/api/reservations", {
+    //                 totalPrice,
+    //                 startDate: dateRange.startDate,
+    //                 endDate: dateRange.endDate,
+    //                 listingId: listing?.id,
+    //                 merchant_uid: uniqueId,
+    //             })
+    //             .then(() => {
+    //                 toast.success("숙소가 예약되었습니다");
+    //                 setDateRange(initialDateRange);
+    //                 router.push("/trips");
+    //             })
+    //             .catch(() => {
+    //                 toast.error("숙소 예약에 실패하였습니다");
+    //             })
+    //             .finally(() => {
+    //                 setIsLoading(false);
+    //                 params.delete();
+    //             });
+    //     }
+
+    //     if (
+    //         params?.get("imp_success") === "false" &&
+    //         typeof params?.get("imp_success") === "string"
+    //     ) {
+    //         toast.error("결제를 취소하였습니다");
+    //         setIsLoading(false);
+    //     }
+    // }, [
+    //     params,
+    //     dateRange.startDate,
+    //     dateRange.endDate,
+    //     listing?.id,
+    //     router,
+    //     totalPrice,
+    //     uniqueId,
+    // ]);
 
     return (
         <Container>
