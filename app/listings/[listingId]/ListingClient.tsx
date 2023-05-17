@@ -84,7 +84,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
                 buyer_email: currentUser?.email,
                 buyer_name: currentUser?.name,
                 merchant_uid: uniqueId,
-                m_redirect_url: `https://clone-example-three.vercel.app/listings/${listing.id}`,
+                m_redirect_url: `https://clone-example-three.vercel.app/listings/${listing.id}?totalPrice=${totalPrice}&startDate=${dateRange.startDate}&endDate=${dateRange.endDate}`,
             },
             (rsp: any) => {
                 if (rsp.success) {
