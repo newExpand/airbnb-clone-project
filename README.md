@@ -8,6 +8,14 @@
 
 **<https://clone-example-three.vercel.app/>**
 
+<br>
+
+## lighthouse
+
+![lighthouse 결과](https://user-images.githubusercontent.com/120312998/239345542-24860208-5ad6-4334-bb39-ad0d5a912c2f.png)
+
+<br>
+
 ## 프로젝트 설명
 
 Airbnb 클론 프로젝트는 Next.js 13 experimental 버전에 Tailwind, Prisma, MongoDB 스택을 사용하여 제작된 풀스택 웹 어플리케이션입니다. 세계적으로 많이 찾는 Airbnb의 디자인과 기능이 마음에 들어 제 방식으로 재구성 해보았습니다.
@@ -146,7 +154,9 @@ npm run dev
 
 ## 도전과제
 
-풀스택 구현 - 전체적인 페이지 기능이 원활히 돌아가게 A-Z까지 혼자 구현해보기
+풀스택 구현 - 전체적인 페이지 기능이 원활히 돌아가게 A-Z까지 혼자 구현해보기(완료)
+
+lighthouse performance 점수 개선하기 - 웹페이지에 이미지가 많은 특성으로 인해 performance가 낮게 나옴을 확인 개선 필요
 
 <br>
 
