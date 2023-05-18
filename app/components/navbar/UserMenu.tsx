@@ -88,6 +88,11 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                         {currentUser ? (
                             <>
                                 <MenuItem
+                                    onClick={() => router.push("/")}
+                                    label="둘러보기"
+                                    responsive
+                                />
+                                <MenuItem
                                     onClick={() => router.push("/trips")}
                                     label="나의 여행"
                                 />
