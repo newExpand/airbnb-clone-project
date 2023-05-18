@@ -12,6 +12,11 @@
 
 Airbnb 클론 프로젝트는 Next.js, Tailwind, Prisma, MongoDB 스택을 사용하여 제작된 풀스택 웹 어플리케이션입니다. 세계적으로 많이 찾는 Airbnb의 디자인과 기능이 마음에 들어 제 방식으로 재구성 해보았습니다.
 
+**이 프로젝트로 얻고 싶은 것**<br>
+프론트엔드를 준비하고 있지만 백엔드의 로직을 좀 더 느끼기 위해 풀스택을 개발을 해봄으로써 전체적인 그림을 경험해 보기 위해 시작하게 되었습니다.
+
+<br>
+
 ## 특징 및 구현 목록
 
 -   Tailwind로 디자인
@@ -28,12 +33,16 @@ Airbnb 클론 프로젝트는 Next.js, Tailwind, Prisma, MongoDB 스택을 사�
 -   즐겨찾기 기능 구현
 -   반응형
 
+<br>
+
 ## 기술 스택
 
 -   React[`Next.js`]
 -   MongoDB
 -   Tailwind
 -   Prisma
+
+<br>
 
 ## Installation
 
@@ -81,6 +90,8 @@ IMP_SECRET=
 npm run dev
 ```
 
+<br>
+
 ## 사용 가능한 명령어
 
 `npm run [command]` 으로 명령 실행
@@ -89,18 +100,48 @@ npm run dev
 | :------ | :------------------------------- |
 | `dev`   | 앱의 개발 인스턴스를 시작합니다. |
 
+<br>
+
 ## 스크린 샷
 
-## 도전과제 및 해결책
+<br>
+
+## 도전과제
+
+풀스택 구현 - 전체적인 페이지 기능이 원활히 돌아가게 A-Z까지 혼자 구현해보기
+
+<br>
+
+## 만들며 작성한 블로그 글
+
+[Prisma 사용/공부 요약](https://opendeveloper.tistory.com/entry/Prisma-%EC%82%AC%EC%9A%A9%EA%B3%B5%EB%B6%80-%ED%9B%84%EA%B8%B0)
+
+[useCallback 사용법 정리](https://opendeveloper.tistory.com/entry/React-useCallback-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%A0%95%EB%A6%AC)
+
+[Next.js에서 Next-Auth의 AuthOptions구성 할 때, Callbacks 옵션에 타입주기](https://opendeveloper.tistory.com/entry/Nextjs%EC%97%90%EC%84%9C-Next-Auth%EC%9D%98-AuthOptions%EA%B5%AC%EC%84%B1-%ED%95%A0-%EB%95%8C-Callbacks-%EC%98%B5%EC%85%98%EC%97%90-%ED%83%80%EC%9E%85%EC%A3%BC%EA%B8%B0)
+
+[[ERROR] Vercel 배포시 Prisma 에러 - 해결](https://opendeveloper.tistory.com/entry/Error-Vercel-%EB%B0%B0%ED%8F%AC%EC%8B%9C-Prisma-%EC%97%90%EB%9F%AC-%ED%9A%8C%EA%B3%A0)
+
+[[ERROR] 구글 Oauth 카카오톡 인앱 에러(※해결법 없음 주의)](https://opendeveloper.tistory.com/entry/Error-%EA%B5%AC%EA%B8%80-Oauth-%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%86%A1-%EC%9D%B8%EC%95%B1-%EC%97%90%EB%9F%AC)
+
+[[ERROR] Prisma 마이그레이션 후 타입스크립트 에러(feat.MongoDB)-해결](https://opendeveloper.tistory.com/entry/ERROR-Prisma-%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98-%ED%9B%84-%ED%83%80%EC%9E%85%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EC%97%90%EB%9F%ACfeatMongoDB)
+
+[Next.js 13 에서 NextResponse 사용 방법](https://opendeveloper.tistory.com/entry/Nextjs-13-%EC%97%90%EC%84%9C-NextResponse-%EC%82%AC%EC%9A%A9-%EB%B0%A9%EB%B2%95)
+
+<br>
 
 ## Deployment
 
 -   Vercel 사용
 
+<br>
+
 ## Roadmap
 
 -   v1.0.0: 기본적인 기능 구현 (배포완료)
 -   v1.0.1: 버그fix & 모바일 최적화 (배포완료)
+
+<br>
 
 ## Contact
 

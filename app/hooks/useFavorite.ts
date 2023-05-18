@@ -32,14 +32,19 @@ const useFavorite = ({ listingId, currentUser }: IUseFavorite) => {
                 let request;
 
                 if (hasFavorited) {
-                    request = () => axios.delete(`/api/favorites/${listingId}`);
+                    request = () => {
+                        toast.success("위시리스트에 취소 되었습니다");
+                        return axios.delete(`/api/favorites/${listingId}`);
+                    };
                 } else {
-                    request = () => axios.post(`/api/favorites/${listingId}`);
+                    request = () => {
+                        toast.success("위시리스트에서 추가 되었습니다");
+                        return axios.post(`/api/favorites/${listingId}`);
+                    };
                 }
 
                 await request();
                 router.refresh();
-                toast.success("성공");
             } catch (error) {
                 toast.error("오류가 났습니다");
             }
