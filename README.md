@@ -44,6 +44,12 @@ Airbnb 클론 프로젝트는 Next.js, Tailwind, Prisma, MongoDB 스택을 사�
 
 <br>
 
+## 상태관리
+
+-   Zustand
+
+<br>
+
 ## Installation
 
 ### 실행 버전
@@ -102,7 +108,39 @@ npm run dev
 
 <br>
 
-## 스크린 샷
+## 스크린 샷 및 GIF
+
+**소셜 로그인(깃허브)**
+
+![소셜 로그인(깃허브)](https://user-images.githubusercontent.com/120312998/239246309-329fd639-f802-4a3c-8c81-c676ecca011c.gif)
+
+**일반 로그인**
+
+![일반 로그인](https://user-images.githubusercontent.com/120312998/239246710-0cbe51f0-a597-4e1e-a484-d599213eca10.gif)
+
+**에어비앤비 등록**
+
+![에어비앤비 등록](https://user-images.githubusercontent.com/120312998/239246502-4f06287d-1a65-4af8-aff6-7873692f4f37.gif)
+
+**에어비앤비 등록해제**
+
+![에어비앤비 등록해제](https://user-images.githubusercontent.com/120312998/239252434-8eb53d31-1dbd-4770-891f-23855872dc19.gif)
+
+**필터기능**
+
+![필터기능](https://user-images.githubusercontent.com/120312998/239246674-2ea1c8bf-2e07-4d40-9e91-271bfc4a998c.gif)
+
+**결제완료 및 환불**
+
+![결제완료 및 환불](https://user-images.githubusercontent.com/120312998/239246804-4023551b-e0ce-4eb9-b32d-609c5233355a.gif)
+
+**결제 및 환불 카톡알림**
+
+![결제 카톡알림](https://github.com/newExpand/airbnb-clone-project/assets/120312998/961943e0-1f25-4b14-90d6-c7c3a3d0db88) ![카톡 결제취소](https://github.com/newExpand/airbnb-clone-project/assets/120312998/8751b486-b5f1-4305-b9e3-c38ef8a5ced2)
+
+**모바일 반응형**
+
+![모바일반응형사진](https://github.com/newExpand/airbnb-clone-project/assets/120312998/5b56d556-8ca3-466f-9820-6bffa369da49)
 
 <br>
 
@@ -140,6 +178,7 @@ npm run dev
 
 -   v1.0.0: 기본적인 기능 구현 (배포완료)
 -   v1.0.1: 버그fix & 모바일 최적화 (배포완료)
+-   v1.0.2: 버그fix 안정화(배포완료)
 
 <br>
 
