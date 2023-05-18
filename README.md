@@ -140,7 +140,7 @@ npm run dev
 
 **모바일 반응형**
 
-![모바일반응형사진](https://github.com/newExpand/airbnb-clone-project/assets/120312998/5b56d556-8ca3-466f-9820-6bffa369da49)
+<img style="border: 1px solid #eee; border-radius: 16px" src="https://github.com/newExpand/airbnb-clone-project/assets/120312998/5b56d556-8ca3-466f-9820-6bffa369da49" width="320px" alt="모바일반응형사진">
 
 <br>
 
