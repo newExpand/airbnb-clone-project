@@ -73,6 +73,9 @@ const ListingCard: React.FC<ListingCardProps> = ({
                         alt=""
                         src={data.imageSrc}
                         className="object-cover w-full h-full transition group-hover:scale-110"
+                        priority
+                        placeholder="blur"
+                        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP0tLCoBwACxQE6jF9+EAAAAABJRU5ErkJggg=="
                     />
                     <div className="absolute top-3 right-3">
                         <HeartButton listingId={data.id} currentUser={currentUser} />
