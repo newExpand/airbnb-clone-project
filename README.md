@@ -160,7 +160,9 @@ npm run dev
 
 풀스택 구현 - 전체적인 페이지 기능이 원활히 돌아가게 A-Z까지 혼자 구현해보기(완료)
 
-lighthouse performance 점수 개선하기 - 웹페이지에 이미지가 많은 특성으로 인해 performance가 낮게 나옴을 확인 개선 필요
+lighthouse performance 점수 개선하기 - 웹페이지에 이미지가 많은 특성으로 인해 performance가 낮게 나옴을 확인 개선 필요(완료)
+
+이미지 등록을 cloudinary를 사용하고 있으나 사용하지 않고 자체개발로 구현해보기(도전중)
 
 <br>
 
